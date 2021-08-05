@@ -16,14 +16,14 @@ const encuestasDummy = [
 const Listado = () => {
   const [encuestas, setEncuestas] = useState([]);
   const [status, setStatus] = useState("idle");
+  const link = "https://ctacddpzo7.execute-api.us-east-1.amazonaws.com/dev/all";
 
   const getEncuestas = () => {
     console.log("CONSULTANDO ENCUESTAS");
     setStatus("loading");
-    setTimeout(() => {
-      setEncuestas(encuestasDummy);
-      setStatus("success");
-    }, 1000);
+    fetch(link)
+      .then((response) => console.log(response.json()))
+      .catch((err) => console.log(err));
   };
 
   //cargar listado al cargar la pagina
