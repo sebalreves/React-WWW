@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import "./App.css";
 import {Button, Card, CardActions, CardContent, CardHeader, Grid, TextField} from "@material-ui/core";
+import {faHandMiddleFinger} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const Formulario = () => {
     const [titulo, setTitulo] = useState("");
@@ -53,6 +55,7 @@ const Formulario = () => {
                     </Button>
 
                     <Button
+                        endIcon={<FontAwesomeIcon icon={faHandMiddleFinger}/>}
                         variant="contained"
                         color="primary"
                         onClick={enviarEncuesta}>
