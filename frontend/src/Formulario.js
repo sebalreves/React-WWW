@@ -9,20 +9,22 @@ import {
   Grid,
   TextField,
 } from "@material-ui/core";
+import { faHandMiddleFinger } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Formulario = () => {
-  const [title, setTitle] = useState("");
-  const [desc, setDesc] = useState("");
+  const [titulo, setTitulo] = useState("");
+  const [descripcion, setDescripcion] = useState("");
 
   const enviarEncuesta = () => {
     console.log("Enviando encuesta");
-    if (title === "" || desc === "") {
+    if (titulo === "" || descripcion === "") {
       alert("Los campos título y descripción son obligatorios");
       return;
     }
     let body = {
-      title: title,
-      desc: desc,
+      title: titulo,
+      desc: descripcion,
     };
 
     let link =
@@ -47,21 +49,21 @@ const Formulario = () => {
             <TextField
               type="text"
               label="Titulo"
-              value={title}
+              value={titulo}
               fullWidth
               variant="outlined"
               margin="normal"
-              onChange={(e) => setTitle(e.currentTarget.value)}
+              onChange={(e) => setTitulo(e.currentTarget.value)}
             />
 
             <TextField
               type="text"
               label="Descripción"
-              value={desc}
+              value={descripcion}
               fullWidth
               variant="outlined"
               margin="normal"
-              onChange={(e) => setDesc(e.currentTarget.value)}
+              onChange={(e) => setDescripcion(e.currentTarget.value)}
             />
           </form>
         </CardContent>
@@ -72,13 +74,17 @@ const Formulario = () => {
             size="small"
             onClick={() => {
               console.log("LIMPIANDO INPUT");
-              setDesc("");
-              setTitle("");
+              setDescripcion("");
+              setTitulo("");
             }}>
             Limpiar
           </Button>
 
-          <Button variant="contained" color="primary" onClick={enviarEncuesta}>
+          <Button
+            endIcon={<FontAwesomeIcon icon={faHandMiddleFinger} />}
+            variant="contained"
+            color="primary"
+            onClick={enviarEncuesta}>
             Enviar
           </Button>
         </CardActions>
