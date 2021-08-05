@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import "./App.css";
-import {Card, CardContent, CardHeader, Grid} from "@material-ui/core";
+import {Button, Card, CardContent, CardHeader, Grid} from "@material-ui/core";
 
 const encuestasDummy = [
     {id: "titulo1", title: "titulo1", description: "descripcion1"},
@@ -31,20 +31,24 @@ const Listado = () => {
     }
     return (
         <Grid item xs="6">
-            <div className="listado">
-                {encuestas.map((encuesta) => {
-                    return (
-                        <Card >
-                            <CardHeader title={encuesta.title}/>
-                            <CardContent>
-                                <p>{encuesta.description}</p>
-                            </CardContent>
+            {encuestas.map((encuesta) => {
+                return (
+                    <Card className="Card">
+                        <CardHeader title={encuesta.title}/>
+                        <CardContent>
+                            <p>{encuesta.description}</p>
+                        </CardContent>
 
-                        </Card>
-                    );
-                })}
-                <button onClick={getEncuestas}>Refrescar listado</button>
-            </div>
+                    </Card>
+                );
+            })}
+            <Button
+                className="BotonListado"
+                variant="contained"
+                color="primary"
+                onClick={getEncuestas}>
+                Refrescar listado
+            </Button>
         </Grid>
     );
 };

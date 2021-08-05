@@ -22,3 +22,11 @@
   background-color: lightgreen;
   grid-area: 2 / 2 / 3 / 3;
 }
+
+.Card {
+  margin: 10px;
+}
+
+.BotonListado {
+  margin-left: 10px !important;
+}

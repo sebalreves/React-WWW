@@ -16,7 +16,7 @@ const Formulario = () => {
     };
     return (
         <Grid item xs="6">
-            <Card>
+            <Card className="Card">
                 <CardHeader title="Registrar nueva encuesta" />
                 <CardContent>
                     <form>
