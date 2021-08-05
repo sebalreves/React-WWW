@@ -11,16 +11,32 @@ import {
 } from "@material-ui/core";
 
 const Formulario = () => {
-  const [titulo, setTitulo] = useState("");
-  const [descripcion, setDescripcion] = useState("");
+  const [title, setTitle] = useState("");
+  const [desc, setDesc] = useState("");
 
   const enviarEncuesta = () => {
     console.log("Enviando encuesta");
+    if (title === "" || desc === "") {
+      alert("Los campos título y descripción son obligatorios");
+      return;
+    }
     let body = {
-      titulo: titulo,
-      descripcion: descripcion,
+      title: title,
+      desc: desc,
     };
-    console.log(body);
+
+    let link =
+      "https://ctacddpzo7.execute-api.us-east-1.amazonaws.com/dev/create";
+
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    };
+
+    fetch(link, requestOptions)
+      .then((response) => console.log(response))
+      .catch((err) => console.log(err));
   };
   return (
     <Grid item xs="6">
@@ -31,21 +47,21 @@ const Formulario = () => {
             <TextField
               type="text"
               label="Titulo"
-              value={titulo}
+              value={title}
               fullWidth
               variant="outlined"
               margin="normal"
-              onChange={(e) => setTitulo(e.currentTarget.value)}
+              onChange={(e) => setTitle(e.currentTarget.value)}
             />
 
             <TextField
               type="text"
               label="Descripción"
-              value={descripcion}
+              value={desc}
               fullWidth
               variant="outlined"
               margin="normal"
-              onChange={(e) => setDescripcion(e.currentTarget.value)}
+              onChange={(e) => setDesc(e.currentTarget.value)}
             />
           </form>
         </CardContent>
@@ -56,8 +72,8 @@ const Formulario = () => {
             size="small"
             onClick={() => {
               console.log("LIMPIANDO INPUT");
-              setDescripcion("");
-              setTitulo("");
+              setDesc("");
+              setTitle("");
             }}>
             Limpiar
           </Button>
