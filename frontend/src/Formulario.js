@@ -29,6 +29,7 @@ const Formulario = () => {
       />
       <button
         onClick={() => {
+          console.log("LIMPIANDO INPUT");
           setDescripcion("");
           setTitulo("");
         }}>

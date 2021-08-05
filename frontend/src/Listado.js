@@ -10,13 +10,19 @@ const Listado = () => {
   const [encuestas, setEncuestas] = useState([]);
   const [status, setStatus] = useState("idle");
 
-  //cargar listado
-  useEffect(() => {
+  const getEncuestas = () => {
+    console.log("CONSULTANDO ENCUESTAS");
     setStatus("loading");
     setTimeout(() => {
       setEncuestas(encuestasDummy);
       setStatus("success");
     }, 1000 * 3);
+  };
+
+  //cargar listado al cargar la pagina
+  useEffect(() => {
+    console.log("USEEFFECT");
+    getEncuestas();
   }, []);
 
   if (status === "idle" || status === "loading") {
@@ -33,6 +39,7 @@ const Listado = () => {
             </>
           );
         })}
+        <button onClick={getEncuestas}>Refrescar listado</button>
       </div>
       )
     </>
