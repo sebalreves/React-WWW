@@ -3,15 +3,15 @@ import "./App.css";
 import { Button, Card, CardContent, CardHeader, Grid } from "@material-ui/core";
 
 const encuestasDummy = [
-  { id: "titulo1", title: "titulo1", description: "descripcion1" },
-  { id: "titulo2", title: "titulo2", description: "descripcion2" },
-  { id: "titulo3", title: "titulo3", description: "descripcion3" },
-  { id: "titulo4", title: "titulo1", description: "descripcion1" },
-  { id: "titulo5", title: "titulo2", description: "descripcion2" },
-  { id: "titulo6", title: "titulo3", description: "descripcion3" },
-  { id: "titulo7", title: "titulo1", description: "descripcion1" },
-  { id: "titulo8", title: "titulo2", description: "descripcion2" },
-  { id: "titulo9", title: "titulo3", description: "descripcion3" },
+  { id: "titulo1", title: "titulo1", desc: "descripcion1" },
+  { id: "titulo2", title: "titulo2", desc: "descripcion2" },
+  { id: "titulo3", title: "titulo3", desc: "descripcion3" },
+  { id: "titulo4", title: "titulo1", desc: "descripcion1" },
+  { id: "titulo5", title: "titulo2", desc: "descripcion2" },
+  { id: "titulo6", title: "titulo3", desc: "descripcion3" },
+  { id: "titulo7", title: "titulo1", desc: "descripcion1" },
+  { id: "titulo8", title: "titulo2", desc: "descripcion2" },
+  { id: "titulo9", title: "titulo3", desc: "descripcion3" },
 ];
 const Listado = () => {
   const [encuestas, setEncuestas] = useState([]);
@@ -22,7 +22,12 @@ const Listado = () => {
     console.log("CONSULTANDO ENCUESTAS");
     setStatus("loading");
     fetch(link)
-      .then((response) => console.log(response.json()))
+      .then((response) =>
+        response.json().then((body) => {
+          setEncuestas(body.Items);
+          setStatus("success");
+        })
+      )
       .catch((err) => console.log(err));
   };
 
@@ -50,7 +55,7 @@ const Listado = () => {
           <Card className="Card" key={encuesta.id}>
             <CardHeader title={encuesta.title} />
             <CardContent>
-              <p>{encuesta.description}</p>
+              <p>{encuesta.desc}</p>
             </CardContent>
           </Card>
         );
