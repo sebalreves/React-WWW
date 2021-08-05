@@ -2,7 +2,7 @@
 
 module.exports.create = async (event) => {
 
-    console.log(event);
+    console.log(event.body);
 
     var AWS = require('aws-sdk');
     var UUID = require('uuid');
@@ -13,12 +13,16 @@ module.exports.create = async (event) => {
 
     var uid = UUID.v4();
 
+    var body = JSON.parse(event.body);
+
+    console.log(body);
+
     var params = {
         TableName: table,
         Item: {
             "id": uid,
-            "title": "test",
-            "desc": "test desc"
+            "title": body.title,
+            "desc": body.desc
         }
     };
 
