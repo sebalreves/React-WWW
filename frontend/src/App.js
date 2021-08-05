@@ -2,14 +2,17 @@ import "./App.css";
 import Header from "./Header";
 import Formulario from "./Formulario";
 import Listado from "./Listado";
+import {Container, Grid} from "@material-ui/core";
 
 function App() {
   return (
-    <div className="parent">
-      <Header />
-      <Formulario />
-      <Listado />
-    </div>
+    <Container>
+        <Grid container spacing="3">
+            <Header />
+            <Formulario />
+            <Listado />
+        </Grid>
+    </Container>
   );
 }
 

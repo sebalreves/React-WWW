@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import {Grid} from "@material-ui/core";
 
 const encuestasDummy = [
   { id: "titulo1", title: "titulo1", description: "descripcion1" },
@@ -16,7 +17,7 @@ const Listado = () => {
     setTimeout(() => {
       setEncuestas(encuestasDummy);
       setStatus("success");
-    }, 1000 * 3);
+    }, 1000);
   };
 
   //cargar listado al cargar la pagina
@@ -29,7 +30,7 @@ const Listado = () => {
     return <p>Cargando</p>;
   }
   return (
-    <>
+    <Grid item xs="6">
       <div className="listado">
         {encuestas.map((encuesta) => {
           return (
@@ -41,8 +42,7 @@ const Listado = () => {
         })}
         <button onClick={getEncuestas}>Refrescar listado</button>
       </div>
-      )
-    </>
+    </Grid>
   );
 };
 

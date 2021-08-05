@@ -1,43 +1,67 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import "./App.css";
-const Formulario = () => {
-  const [titulo, setTitulo] = useState("");
-  const [descripcion, setDescripcion] = useState("");
+import {Button, Card, CardActions, CardContent, CardHeader, Grid, TextField} from "@material-ui/core";
 
-  const enviarEncuesta = () => {
-    console.log("Enviando encuesta");
-    let body = {
-      titulo: titulo,
-      descripcion: descripcion,
+const Formulario = () => {
+    const [titulo, setTitulo] = useState("");
+    const [descripcion, setDescripcion] = useState("");
+
+    const enviarEncuesta = () => {
+        console.log("Enviando encuesta");
+        let body = {
+            titulo: titulo,
+            descripcion: descripcion,
+        };
+        console.log(body);
     };
-    console.log(body);
-  };
-  return (
-    <div className="formulario">
-      <p>Registrar nueva encuesta</p>
-      <input
-        type="text"
-        placeholder="titulo"
-        value={titulo}
-        onChange={(e) => setTitulo(e.currentTarget.value)}
-      />
-      <input
-        type="text"
-        placeholder="descripcion"
-        value={descripcion}
-        onChange={(e) => setDescripcion(e.currentTarget.value)}
-      />
-      <button
-        onClick={() => {
-          console.log("LIMPIANDO INPUT");
-          setDescripcion("");
-          setTitulo("");
-        }}>
-        Clear
-      </button>
-      <button onClick={enviarEncuesta}>Enviar</button>
-    </div>
-  );
+    return (
+        <Grid item xs="6">
+            <Card>
+                <CardHeader title="Registrar nueva encuesta" />
+                <CardContent>
+                    <form>
+                        <TextField type="text"
+                                   label="Titulo"
+                                   value={titulo}
+                                   fullWidth
+                                   variant="outlined"
+                                   margin="normal"
+                                   onChange={(e) => setTitulo(e.currentTarget.value)}/>
+
+                        <TextField type="text"
+                                   label="Descripción"
+                                   value={descripcion}
+                                   fullWidth
+                                   variant="outlined"
+                                   margin="normal"
+                                   onChange={(e) => setDescripcion(e.currentTarget.value)}/>
+
+
+                    </form>
+                </CardContent>
+                <CardActions>
+                    <Button
+                        variant="text"
+                        color="primary"
+                        size="small"
+                        onClick={() => {
+                            console.log("LIMPIANDO INPUT");
+                            setDescripcion("");
+                            setTitulo("");
+                        }}>
+                        Limpiar
+                    </Button>
+
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={enviarEncuesta}>
+                        Enviar
+                    </Button>
+                </CardActions>
+            </Card>
+        </Grid>
+    );
 };
 
 export default Formulario;
