@@ -1,67 +1,74 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "./App.css";
-import {Button, Card, CardActions, CardContent, CardHeader, Grid, TextField} from "@material-ui/core";
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardHeader,
+  Grid,
+  TextField,
+} from "@material-ui/core";
 
 const Formulario = () => {
-    const [titulo, setTitulo] = useState("");
-    const [descripcion, setDescripcion] = useState("");
+  const [titulo, setTitulo] = useState("");
+  const [descripcion, setDescripcion] = useState("");
 
-    const enviarEncuesta = () => {
-        console.log("Enviando encuesta");
-        let body = {
-            titulo: titulo,
-            descripcion: descripcion,
-        };
-        console.log(body);
+  const enviarEncuesta = () => {
+    console.log("Enviando encuesta");
+    let body = {
+      titulo: titulo,
+      descripcion: descripcion,
     };
-    return (
-        <Grid item xs="6">
-            <Card className="Card">
-                <CardHeader title="Registrar nueva encuesta" />
-                <CardContent>
-                    <form>
-                        <TextField type="text"
-                                   label="Titulo"
-                                   value={titulo}
-                                   fullWidth
-                                   variant="outlined"
-                                   margin="normal"
-                                   onChange={(e) => setTitulo(e.currentTarget.value)}/>
+    console.log(body);
+  };
+  return (
+    <Grid item xs="6">
+      <Card className="Card">
+        <CardHeader title="Registrar nueva encuesta" />
+        <CardContent>
+          <form>
+            <TextField
+              type="text"
+              label="Titulo"
+              value={titulo}
+              fullWidth
+              variant="outlined"
+              margin="normal"
+              onChange={(e) => setTitulo(e.currentTarget.value)}
+            />
 
-                        <TextField type="text"
-                                   label="Descripción"
-                                   value={descripcion}
-                                   fullWidth
-                                   variant="outlined"
-                                   margin="normal"
-                                   onChange={(e) => setDescripcion(e.currentTarget.value)}/>
+            <TextField
+              type="text"
+              label="Descripción"
+              value={descripcion}
+              fullWidth
+              variant="outlined"
+              margin="normal"
+              onChange={(e) => setDescripcion(e.currentTarget.value)}
+            />
+          </form>
+        </CardContent>
+        <CardActions>
+          <Button
+            variant="text"
+            color="primary"
+            size="small"
+            onClick={() => {
+              console.log("LIMPIANDO INPUT");
+              setDescripcion("");
+              setTitulo("");
+            }}>
+            Limpiar
+          </Button>
 
-
-                    </form>
-                </CardContent>
-                <CardActions>
-                    <Button
-                        variant="text"
-                        color="primary"
-                        size="small"
-                        onClick={() => {
-                            console.log("LIMPIANDO INPUT");
-                            setDescripcion("");
-                            setTitulo("");
-                        }}>
-                        Limpiar
-                    </Button>
-
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        onClick={enviarEncuesta}>
-                        Enviar
-                    </Button>
-                </CardActions>
-            </Card>
-        </Grid>
-    );
+          <Button variant="contained" color="primary" onClick={enviarEncuesta}>
+            Enviar
+          </Button>
+        </CardActions>
+      </Card>
+    </Grid>
+  );
 };
 
 export default Formulario;
