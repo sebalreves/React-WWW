@@ -22,13 +22,19 @@ module.exports.create = async (event) => {
         }
     };
 
+    console.log(params)
+
     console.log("Adding a new item...");
-    docClient.put(params, function(err, data) {
-        if (err) {
-            console.log("Unable to add item. Error JSON:", JSON.stringify(err, null, 2));
-        } else {
-            console.log("Added item:", JSON.stringify(data, null, 2));
-        }
-    });
+
+
+    try {
+        const data = await docClient.put(params).promise()
+        console.log("Success")
+        console.log(data)
+        return data
+    } catch (err) {
+        console.log("Failure", err.message)
+        // there is no data here, you can return undefined or similar
+    }
     
 };
