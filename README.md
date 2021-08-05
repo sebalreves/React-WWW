@@ -35,3 +35,5 @@ Podemos apreciar como se ingresa una nueva encuesta con titulo= Title 1 y descri
 Las encuestas quedan almacenadas en DynamoDB como se puede apreciar en la siguiente imagen.
 
 ![](evidence/bd.PNG)
+
+[Link de la página](http://frontend-www.s3-website-us-east-1.amazonaws.com/)
