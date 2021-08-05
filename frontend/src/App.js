@@ -5,7 +5,7 @@ import Listado from "./Listado";
 import { Container, Grid } from "@material-ui/core";
 
 function App() {
-  document.title = "¿y el quiz 2?";
+  document.title = "Proyecto WWW";
   return (
     <>
       <Header />
