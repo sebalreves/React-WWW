@@ -24,9 +24,9 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
+        <Header />
         <Container>
             <Grid container spacing="3">
-                <Header />
                 <Formulario />
                 <Listado />
             </Grid>
