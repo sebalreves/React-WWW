@@ -26,7 +26,7 @@ Se implementaron dos funciones, create y getAll, las cuales creaban y retornaban
 ### GetAll:
 ![](evidence/get_all_function.PNG)
 
-## Funcionamiento de la página:
+## Funcionamiento de la página: ([Link de la página](http://frontend-www.s3-website-us-east-1.amazonaws.com/))
 
 Podemos apreciar como se ingresa una nueva encuesta con titulo= Title 1 y descripcion= Desc 1, la cual se almacena en DynamoDB al presionar el botón enviar, estas encuestas se pueden revisar al presionar el botón refrescar listado. 
 
@@ -36,4 +36,4 @@ Las encuestas quedan almacenadas en DynamoDB como se puede apreciar en la siguie
 
 ![](evidence/bd.PNG)
 
-[Link de la página](http://frontend-www.s3-website-us-east-1.amazonaws.com/)
+
