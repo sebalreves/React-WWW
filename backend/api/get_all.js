@@ -45,7 +45,7 @@ module.exports.getAll = async (event) => {
             },
             body: null,
         };
-        // there is no data here, you can return undefined or similar
+
     }
 
 };
