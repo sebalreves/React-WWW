@@ -25,7 +25,11 @@ module.exports.getAll = async (event) => {
         console.log(data)
         return {
             statusCode: 200,
-            body: data,
+            body: JSON.stringify(
+                data,
+                null,
+                2
+            ),
         };
     } catch (err) {
         console.log("Failure", err.message)
