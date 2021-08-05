@@ -21,11 +21,17 @@ functions:
   create:
     handler: api/create.create
     events:
-      - http: POST create
+      - http:
+          path: create
+          method: post
+          cors: true
   getAll:
     handler: api/get_all.getAll
     events:
-      - http: GET all
+      - http:
+          path: all
+          method: get
+          cors: true
 
 resources:
   Resources:
