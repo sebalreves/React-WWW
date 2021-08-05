@@ -37,6 +37,10 @@ module.exports.create = async (event) => {
         console.log(data)
         return {
             statusCode: 200,
+            headers: {
+              'Access-Control-Allow-Origin': '*',
+              'Access-Control-Allow-Credentials': true,
+            },
             body: JSON.stringify(
                 {
                     id: uid,
@@ -49,6 +53,10 @@ module.exports.create = async (event) => {
         console.log("Failure", err.message)
         return {
             statusCode: 500,
+            headers: {
+              'Access-Control-Allow-Origin': '*',
+              'Access-Control-Allow-Credentials': true,
+            },
             body: null,
         };
         // there is no data here, you can return undefined or similar
